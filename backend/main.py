@@ -1,17 +1,20 @@
-from fastapi import FastAPI
+from fastapi import FastAPI , Body
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pathlib import Path
 from sqlmodel import Field, Session, SQLModel, create_engine, select
 import uvicorn
-
+from dcf import Stock
 
 app = FastAPI()
 #api shits
 
 
-
-
+@app.post("/api/get-ticker")
+def get_ticker(user_query:dict = Body()):
+    payload = user_query.get("user_query")
+    stock = Stock.getTicker(query=payload)
+    return stock
 
 
 
