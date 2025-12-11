@@ -16,6 +16,12 @@ def get_ticker(user_query:dict = Body()):
     stock = Stock.getTicker(query=payload)
     return stock
 
+@app.post("/api/get-balance-sheet")
+async def get_ticker(user_query:dict = Body()):
+    payload = user_query.get("user_query")
+    balance_sheet = Stock.getBalanceSheet(ticker=payload)
+    return balance_sheet
+
 
 
 
@@ -32,7 +38,7 @@ app.mount("/immutable", StaticFiles(directory=build_dir / "_app" / "immutable"),
 #  Fallback to index.html for all other routes (SPA routing)
 @app.get("/{full_path:path}")
 async def spa_fallback(full_path: str):
-    return FileResponse(build_dir / "index.html")
+    return FileResponse(build_dir / "index.html")   
 
 if __name__ == "__main__":
     uvicorn.run("main:app", port=5000, reload=True)

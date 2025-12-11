@@ -26,7 +26,7 @@
     };
 
 </script>
-<main class="p-8 max-w-3xl mx-auto">
+<main class="p-8 max-w-3xl mx-auto ">
     <h1 class="text-3xl font-bold mb-6 text-center">Search Market</h1>
 
     <div class="flex flex-col items-center w-full">
@@ -66,3 +66,6 @@
         </div>
     </div>
 </main>
+
+
+
